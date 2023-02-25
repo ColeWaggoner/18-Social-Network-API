@@ -24,6 +24,13 @@
   
   ## Usage
   To run open in terminal, run npm i, then npm start.
+
+  Technical Criteria and how to start:
+  https://drive.google.com/file/d/1-bcFXCGc_B2QRxmd_OV6oRMlFEFstZpI/view
+
+
+  Showing working routes in Insomnia:
+  https://drive.google.com/file/d/1V9YbKzZ_BindqzMVOniPhVzWcLQ_NwZk/view
   
   
   ## Contributions
