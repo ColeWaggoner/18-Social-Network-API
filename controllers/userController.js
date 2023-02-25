@@ -15,12 +15,12 @@ getAllUsers(req, res) {
 },
 
 
-getUserbyId(req, res) {
+getUserById(req, res) {
   User.findOne({ _id: req.params.userId })
-  .populate({
-    path: 'Thoughts',
-    select: '-__v'
-  })
+  // .populate({
+  //   path: 'Thoughts',
+  //   select: '-__v'
+  // })
   .populate({
     path: 'Friends',
     select: '-__v'
@@ -47,7 +47,7 @@ createUser(req, res) {
 updateUser(req, res) {
   User.findOneAndUpdate(
     { _id: req.params.userId },
-    update,
+    { $set: req.body},
     { new: true }
   )
   .then((User) => 
@@ -73,7 +73,7 @@ deleteUser(req, res) {
 addFriend(req, res) {
   User.findOneAndUpdate(
     { _id: req.params.userId },
-    { $addToSet: { Friends: req.params.friendId } },
+    { $addToSet: { friends: req.body.friendId } },
     { new: true }
   )
   .then((User) =>
@@ -88,7 +88,7 @@ addFriend(req, res) {
 deleteFriend(req, res) {
   User.findOneAndUpdate(
     { _id: req.params.userId },
-    { $pull: { Friends: req.params.friendId } },
+    { $pull: { friends: req.params.friendId } },
     { new: true }
   )
   .then((User) =>
@@ -99,3 +99,5 @@ deleteFriend(req, res) {
   .catch((err) => res.status(500).json(err));  
 }
 };
+
+module.exports = userController;
